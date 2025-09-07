@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeartLinke Relationship  - Modern Dating Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --dark: #2b2d42;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .profile-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-image {
+            height: 300px;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .online {
+            background-color: #38a169;
+        }
+        
+        .recent {
+            background-color: #ecc94b;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #ff2d55;
+        }
+        
+        .filter-item {
+            transition: all 0.2s ease;
+        }
+        
+        .filter-item:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .match-percentage {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1b96c6de-5f21-4844-b5f2-5c0a5138f017.png" alt="HeartLink logo with interconnected heart icon in pink and white colors" class="h-12 w-12">
+                    <span class="text-2xl font-bold">HeartLink</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#" class="font-medium hover:text-gray-200 transition">Discover</a>
+                    <a href="#" class="font-medium hover:text-gray-200 transition">Matches</a>
+                    <a href="#" class="font-medium hover:text-gray-200 transition">Messages</a>
+                    <a href="#" class="font-medium hover:text-gray-200 transition">Profile</a>
+                    <a href="https://instagram.com" target="_blank" class="text-white hover:text-pink-200 transition">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="bg-white text-pink-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                        Upgrade
+                    </button>
+                    <div class="relative group">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1307f21d-2b73-417c-bd80-64527d648d1d.png" alt="User profile picture showing smiling female with curly hair" class="h-10 w-10 rounded-full border-2 border-white cursor-pointer">
+                        <div class="hidden group-hover:block absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">My Profile</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Account Settings</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Subscription</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-pink-100">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Section -->
+    <div class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1307f21d-2b73-417c-bd80-64527d648d1d.png" alt="User profile" class="h-12 w-12 rounded-full">
+                    <div>
+                        <h3 class="font-bold">XX name/h3>
+                        <p class="text-sm text-gray-600">Premium Member</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg text-sm">
+                        Edit Profile
+                    </button>
+                    <button class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg text-sm">
+                        Upgrade Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Filters Section -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Find Your Match</h3>
+                    <p class="text-gray-600">Refine your search criteria</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-3">
+                    <div class="filter-item px-4 py-2 bg-gray-100 rounded-full text-gray-700 font-medium cursor-pointer">
+                        <span class="flex items-center">
+                            <span class="indicator online"></span>
+                            Online Now
+                        </span>
+                    </div>
+                    
+                    <div class="filter-item px-4 py-2 bg-gray-100 rounded-full text-gray-700 font-medium cursor-pointer">
+                        <span>21-50 years</span>
+                    </div>
+                    
+                    <div class="filter-item px-4 py-2 bg-gray-100 rounded-full text-gray-700 font-medium cursor-pointer">
+                        <span>Within 25 miles</span>
+                    </div>
+                    
+                    <div class="filter-item px-4 py-2 bg-gray-100 rounded-full text-gray-700 font-medium cursor-pointer">
+                        <span>Similar Interests</span>
+                    </div>
+                    
+                    <button class="filter-item px-4 py-2 bg-gray-800 text-white rounded-full font-medium hover:bg-gray-700 transition">
+                        More Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Profiles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Profile Card 1 -->
+            <div class="profile-card bg-white rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img src="image/pic.jpg" alt="Professional man smiling outdoors in business casual attire with city backdrop" class="w-full profile-image">
+                    
+                    <div class="absolute bottom-4 left-4 match-percentage px-3 py-1 rounded-full text-sm font-bold text-pink-600">
+                        94% Match
+                    </div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <button class="bg-white p-2 rounded-full shadow-md text-gray-700 hover:text-pink-600 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">XX name, 28</h4>
+                            <p class="text-gray-600">Software Engineer • 5 miles away</p>
+                        </div>
+                        
+                        <span class="flex items-center text-sm text-gray-500">
+                            <span class="indicator online"></span>
+                            Online
+                        </span>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">Tech enthusiast who loves hiking and cooking Italian food. Looking for someone to share adventures with.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Travel</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Foodie</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Tech</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-1 mb-3">
+                        <a href="https://wa.me" target="_blank" class="text-gray-500 hover:text-green-500 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-6.29-9.282c0-.086.008-.182-.054-.236-.06-.06-.162-.082-.247-.041-.431.219-1.181.816-1.408.996l-.354.254c-.05.042-.097.1-.08.165.016.066.082.086.157.132.33.205.688.36 1.125.508.068.024.137.006.192-.041.178-.15.597-.6.763-.82.108-.144.112-.277.012-.352-.113-.085-.432-.372-.706-.607"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button class="btn-primary text-white px-6 py-2 rounded-full font-medium w-full">Connect</button>
+                        <button class="border border-gray-300 px-6 py-2 rounded-full font-medium w-full">View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Card 2 -->
+            <div class="profile-card bg-white rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/75589d83-fde3-4437-b432-527ae1f9ada9.png" alt="Woman laughing in sunlight wearing casual summer dress in park setting" class="w-full profile-image">
+                    
+                    <div class="absolute bottom-4 left-4 match-percentage px-3 py-1 rounded-full text-sm font-bold text-pink-600">
+                        87% Match
+                    </div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <button class="bg-white p-2 rounded-full shadow-md text-gray-700 hover:text-pink-600 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">XX name, age</h4>
+                            <p class="text-gray-600">Graphic Designer • 3 miles away</p>
+                        </div>
+                        
+                        <span class="flex items-center text-sm text-gray-500">
+                            <span class="indicator recent"></span>
+                            Recently online
+                        </span>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">Creative soul who enjoys painting and jazz music. Looking for deep conversations and spontaneous trips.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Art</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Music</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Yoga</span>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button class="btn-primary text-white px-6 py-2 rounded-full font-medium w-full">Connect</button>
+                        <button class="border border-gray-300 px-6 py-2 rounded-full font-medium w-full">View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Card 3 -->
+            <div class="profile-card bg-white rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7fbc4cdd-142a-456e-83d7-0267f39d9ce8.png" alt="Man with beard smiling near lake wearing casual outdoor jacket with mountain scenery" class="w-full profile-image">
+                    
+                    <div class="absolute bottom-4 left-4 match-percentage px-3 py-1 rounded-full text-sm font-bold text-pink-600">
+                        76% Match
+                    </div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <button class="bg-white p-2 rounded-full shadow-md text-gray-700 hover:text-pink-600 transition">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">XX name, age</h4>
+                            <p class="text-gray-600">Outdoor Guide • 15 miles away</p>
+                        </div>
+                        
+                        <span class="flex items-center text-sm text-gray-500">
+                            <span class="indicator online"></span>
+                            Online
+                        </span>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4">Passionate about nature and conservation. When I'm not guiding tours, I'm probably reading philosophy or brewing beer.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Adventure</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Nature</span>
+                        <span class="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium">Reading</span>
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        <button class="btn-primary text-white px-6 py-2 rounded-full font-medium w-full">Connect</button>
+                        <button class="border border-gray-300 px-6 py-2 rounded-full font-medium w-full">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="mt-12 gradient-bg text-white rounded-xl p-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Find Your Perfect Match Today</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">Join thousands of singles who found meaningful connections through HeartLink's advanced matching algorithm.</p>
+            <button class="bg-white text-pink-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition">Create Free Profile</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HeartLink</h3>
+                    <p class="text-gray-400">Creating meaningful connections since 2018.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Safety Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Community Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2026/2025 HeartLink. All rights reserved.</p>
+                
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample JavaScript for interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Favorite button functionality
+            const favoriteButtons = document.querySelectorAll('.profile-card [aria-label="Favorite"]');
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.toggle('text-pink-600');
+                    this.classList.toggle('text-gray-700');
+                });
+            });
+            
+            // Mock filter functionality
+            const filterItems = document.querySelectorAll('.filter-item');
+            filterItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // This would normally filter results
+                    console.log('Filter applied:', this.textContent.trim());
+                    // UI feedback
+                    this.classList.toggle('bg-gray-800');
+                    this.classList.toggle('text-white');
+                    this.classList.toggle('bg-gray-100');
+                    this.classList.toggle('text-gray-700');
+                });
+            });
+            
+            // Simulate connection requests
+            const connectButtons = document.querySelectorAll('.btn-primary');
+            connectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert("Connection request sent!");
+                    this.textContent = "Pending";
+                    this.style.backgroundColor = "#e2e8f0";
+                    this.style.color = "#64748b";
+                    this.disabled = true;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
